@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>001-button-text-staggered-sliding-effects</title>
+    <style>
+        html, body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            width: 100%;
+            background: papayawhip;
+            font-size: 62.5%;
+        }
+        .box {
+            overflow: hidden;
+            width: 20rem;
+            height: 6rem;
+            text-align: center;
+            font-family: sans-serif;
+            border: .15rem solid black;
+        }
+        .box span {
+            display: inline-block;
+            font-size: 3rem;
+            line-height: 6rem;
+            color: blue;
+            transition: .5s;
+        }
+        .box span::before {
+            content: attr(data-text);
+            color: red;
+            position: absolute;
+        }
+
+        .box span:nth-child(odd){transform: translateY(100%);}
+        .box span:nth-child(even){transform: translateY(-100%);}
+
+        .box span:nth-child(odd)::before{transform: translateY(-100%);}
+        .box span:nth-child(even)::before{transform: translateY(100%);}
+
+        /* hover时，将伪元素移出box，真实元素移入box */
+        .box:hover span {transform: translateY(0);}
+    </style>
+</head>
+<body>
+    <!--
+        实现思路：
+            - 初始状态：显示伪元素
+            - hover状态：使用transition将伪元素移出box,显示真实元素
+
+        知识要点:
+            ::before
+            translateY
+            data-*
+            content
+            nth-child
+    -->
+    <div class="box">
+        <span data-text='B'>B</span>
+        <span data-text='U'>U</span>
+        <span data-text='T'>T</span>
+        <span data-text='T'>T</span>
+        <span data-text='O'>O</span>
+        <span data-text='N'>N</span>
+    </div>
+</body>
+</html>
