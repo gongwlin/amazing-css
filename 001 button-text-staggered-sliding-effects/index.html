@@ -31,11 +31,11 @@
             transition: .5s;
         }
         .box span::before {
-            content: attr(data-text);
+            content: attr(data-text);    /*取data-text属性的值，作为content的值*/
             color: red;
             position: absolute;
         }
-
+        /* transform 百分比相对于自身宽高 */
         .box span:nth-child(odd){transform: translateY(100%);}
         .box span:nth-child(even){transform: translateY(-100%);}
 
@@ -52,7 +52,7 @@
             - 初始状态：显示伪元素
             - hover状态：使用transition将伪元素移出box,显示真实元素
 
-        知识要点:
+        实现要点:
             ::before
             translateY
             data-*
