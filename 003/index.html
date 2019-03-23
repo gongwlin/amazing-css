@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background: pink;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            user-select: none;
+        }
+        .container {
+            position: relative;
+            font-size: 10px;
+            height: 25em;
+            width: 25em;
+            padding: 1.5em;
+            border-radius: 1em;
+            box-shadow: 0 0 5px black;
+            overflow: hidden;
+        }
+        .container::before {
+            content: '';
+            position: absolute;
+            height: 150%;
+            width: 150%;
+            z-index: -1;
+            /* translate(20%) XY        translateX(20%) X */
+            /* rotate() XY              rotateX() X*/
+            transform: translate(-20%,-20%)  rotate(45deg);
+            background: repeating-linear-gradient(white 0,white 0.75em, hotpink 0.75em, hotpink 1.5em);
+            animation: run 30s linear infinite;
+        }
+
+        .container::after {
+            content:'';
+            width: calc(100% - 3em);
+            height: calc(100% - 3em);
+            position: absolute;
+            top: 1.5em;
+            margin: 0;
+            background: white;
+            border-radius: 1em;
+            box-shadow: 0 0 5px rgba(0,0,0,1),inset 0 0 5px black;
+            z-index: -1;
+        }
+        
+        .container p {
+            position: absolute;
+            top: 0;
+            margin: 0;
+            bottom: 0;
+            transform: rotate(-45deg);
+            text-align: center;
+            text-shadow: -3px 3px silver;
+            font: bold 12em/2.4em sans-serif;
+            text-transform: uppercase;
+            color: hsla(328, 100%, 54%, 0.8);
+        }
+        @keyframes run {
+            to {
+                background-position: 0 50em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>css</p>
+    </div>
+</body>
+</html>
